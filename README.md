@@ -33,8 +33,8 @@ Ensure you have the following installed:
 1. **Clone the Repository**
 
     ```bash
-    git clone https://github.com/your-username/bodybuilding-collective.git
-    cd bodybuilding-collective
+    git clone https://github.com/your-username/GymApp.git
+    cd GymApp
     ```
 
 2. **Install Frontend Dependencies**
@@ -76,14 +76,14 @@ Ensure you have the following installed:
 
     ```bash
     cd gym-app-back-end
-    npm run dev
+    npm run start
     ```
 
     Start the frontend server:
 
     ```bash
     cd ../gym-app-front-end
-    npm start
+    npm run start
     ```
 
     The application should now be running locally at `http://localhost:3000`.
@@ -169,4 +169,3 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 ## Acknowledgements
 
 - Thanks to the contributors of ExerciseDB API for providing a comprehensive exercise database.
-- Special thanks to all the developers who contributed to this project.
