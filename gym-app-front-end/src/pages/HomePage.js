@@ -1,9 +1,14 @@
 // src/pages/HomePage.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import logo from '../assets/icons/bodybuilding-collective-favicon-black.png';
+import { Box, Button, Stack, TextField, Typography } from '@mui/material';
+import SearchExercises from '../components/SearchExercises';
 
 const HomePage = () => {
+    const [exercises, setExercises] = useState([]);
+    const [bodyPart, setBodyParts] = useState([]);
+
     return (
         <div className="wrapper">
             <nav className="navbar">
@@ -34,12 +39,8 @@ const HomePage = () => {
             </section>
             <section id="exercise-search" className="exercise-search container">
                 <h2>Find Your Favorite Exercises</h2>
-                <div className="search-bar-container">
-                    <div className="search-bar">
-                        <input type="text" placeholder="Search Exercises" />
-                        <button>Search</button>
-                    </div>
-                </div>
+                <SearchExercises setExercises={setExercises} bodyPart={bodyPart}
+                setBodyPart={setBodyParts} />
             </section>
             <section className="popular-blog-posts container">
                 <h2>Popular Blog Posts</h2>

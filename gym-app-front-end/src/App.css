@@ -112,6 +112,7 @@ body {
 }
 
 .hero-wrapper {
+  flex-wrap: wrap;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -167,13 +168,49 @@ body {
   align-items: center; /* Center the image vertically */
   padding: 1rem;
 }
-
+/* width 100% makes the image scale with its container */
 .hero-image img {
-  width: auto;
-  height: 100%;
+  width: 100%;
+  height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+/* adjust layouts for screens smaller tan 768px */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+
+  .hero-wrapper {
+    flex-direction: column;
+  }
+
+  .hero-text h1 {
+    font-size: 2rem;
+  }
+
+  .hero-text p {
+    font-size: 1rem;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto;
+  } 
+
+  .featured-exercises .search-bar input {
+    width: 100%; /* Make input take full width */
+    max-width: none; /* Remove max-width constraint */
+  }
+
+  .exercise-card, .article-card, .post-card {
+    flex: 1 1 100%; /* Make cards take full width */
+  }
+}
+
 
 @media (min-width: 1200px) {
   .hero-text h1 {
