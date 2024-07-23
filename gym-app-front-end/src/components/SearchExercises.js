@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../App.css';
-import {Box, Typography} from '@mui/material';
+import {Stack, Box} from '@mui/material';
 import HorizontalScroll from './HorizontalScroll';
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
@@ -48,21 +48,23 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     };
 
     return (
-        <div className="search-bar-container">
-            <div className="search-bar">
-                <input
-                    type="text"
-                    placeholder="Search Exercises"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button onClick={handleSearch}>Search</button>
-                <Box sx={{ position: 'relative', width: '100%', p: '20px'}}>
-                    <HorizontalScroll data={bodyPart}
-                    bodyPart={bodyPart} setBodyPart={setBodyPart}/> 
-                </Box>
-            </div>
-        </div>
+        <Stack alignItems="center" justifyContent="center" p="20px">
+            <Box sx={{ position: 'relative', width: '75%', p: '10px', mb: '20px' }}>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search Exercises"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button onClick={handleSearch}>Search</button>
+                </div>
+            </Box>
+            <Box sx={{ position: 'relative', width: '100%' }}>
+                <HorizontalScroll data={bodyPart} bodyPart={bodyPart} setBodyPart={setBodyPart}/> 
+            </Box>
+        </Stack>
+
     )
 
 }
