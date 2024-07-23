@@ -1,6 +1,8 @@
 # Bodybuilding Collective
 
 ## Overview
+<img width="1505" alt="Screenshot 2024-07-23 at 3 31 45 AM" src="https://github.com/user-attachments/assets/452d5327-8d58-4303-b280-1d13a0df80b6">
+<img width="1496" alt="Screenshot 2024-07-23 at 3 32 00 AM" src="https://github.com/user-attachments/assets/c63c513b-9cfb-488b-b5cd-917241212593">
 
 The Bodybuilding Collective is a comprehensive web application designed to support bodybuilders and fitness enthusiasts. The app provides an extensive exercise library, a community forum, personalized workout plans, and much more to help users achieve their fitness goals efficiently.
 
