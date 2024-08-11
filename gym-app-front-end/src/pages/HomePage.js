@@ -4,6 +4,7 @@ import '../App.css';
 import logo from '../assets/icons/bodybuilding-collective-favicon-black.png';
 import { Box, Button, Stack, TextField, Typography } from '@mui/material';
 import SearchExercises from '../components/SearchExercises';
+import Exercises from '../components/Exercises';
 
 const HomePage = () => {
     const [exercises, setExercises] = useState([]);
@@ -39,8 +40,11 @@ const HomePage = () => {
             </section>
             <section id="exercise-search" className="exercise-search container">
                 <h2>Find Your Favorite Exercises</h2>
-                <SearchExercises setExercises={setExercises} bodyPart={bodyPart}
+                <SearchExercises exercises={exercises} setExercises={setExercises} bodyPart={bodyPart}
                 setBodyPart={setBodyParts} />
+            </section>
+            <section id="exercise-search-results" className="exercises-search-results-container">
+                <Exercises exercises={exercises} setExercises={setExercises} bodyPart={bodyPart}/>
             </section>
             <section className="popular-blog-posts container">
                 <h2>Popular Blog Posts</h2>

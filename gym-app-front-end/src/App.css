@@ -495,6 +495,25 @@ h2 {
   flex-wrap: wrap;
 }
 
+.exercises-search-results-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+@media (max-width: 1200px) {
+  .exercises-search-results-container {
+      width: 95%; /* Slightly wider on smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .exercises-search-results-container {
+      width: 100%; /* Full width on small screens */
+      padding: 10px; /* Reduce padding on smaller screens */
+  }
+}
 @media screen and (min-width: 700px) {
 
   .left-arrow {

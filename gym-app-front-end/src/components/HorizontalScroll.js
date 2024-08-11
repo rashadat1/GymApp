@@ -38,21 +38,27 @@ const RightArrow = () => {
     );
 };
 
-const HorizontalScroll = ({ data, bodyPart, setBodyPart, bodyParts }) => (
-    <div className="horizontal-scroll-container">
-        <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-            {data.map((item) => (
-                <Box
-                    key={item.id || item}
-                    itemId={item.id || item}
-                    title={item.id || item}
-                    m="0 40px"
-                >
-                    <BodyPart item={item} bodyPart={bodyPart} setBodyPart={setBodyPart} />
-                </Box>
-            ))}
-        </ScrollMenu>
-    </div>
-);
+const HorizontalScroll = ({ data = [], bodyPart, setBodyPart, bodyParts }) => {
+    console.log('Data is value:',data);
+    if (!Array.isArray(data) || data.length === 0) {
+        return <p>Loading...</p>; // Customize this as needed
+    }
+    return (
+        <div className="horizontal-scroll-container">
+            <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
+                {data.map((item) => (
+                    <Box
+                        key={item.id || item}
+                        itemId={item.id || item}
+                        title={item.id || item}
+                        m="0 40px"
+                    >
+                        <BodyPart item={item} bodyPart={bodyPart} setBodyPart={setBodyPart} />
+                    </Box>
+                ))}
+            </ScrollMenu>
+        </div>
+    );
+};
 
 export default HorizontalScroll;

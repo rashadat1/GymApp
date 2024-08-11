@@ -14,7 +14,6 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage/>} />
         <Route path="/Home" element={<HomePage/>}/>
-        <Route path="/exercise/:id" element={<ExerciseDetails/>} />
       </Routes>
     </Layout>
   )

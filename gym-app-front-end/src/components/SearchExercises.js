@@ -3,19 +3,24 @@ import '../App.css';
 import {Stack, Box} from '@mui/material';
 import HorizontalScroll from './HorizontalScroll';
 
-const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
+const SearchExercises = ({ exercises, setExercises, bodyPart, setBodyPart }) => {
 
     const [search, setSearch] = useState('');
-
+    const [selectedBodyPart, setSelectedBodyPart] = useState('all');
     // create list of categories of exercises with a useEffect
     // fetch the categories as soon as the page loads
-
+    
     useEffect(() => {
         const fetchExercisesData = async () => {
-            const response = await fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-            const bodyPart = await response.json();
-            setBodyPart(['all', ...bodyPart]);
-        }
+            try {
+                const response = await fetch('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
+                const bodyPart = await response.json();
+                setBodyPart(['all', ...bodyPart]);
+            } catch (error) {
+                console.error("Failed to fetch body parts", error);
+                setBodyPart([]); // Fallback to an empty array on error
+            }
+        };
 
         fetchExercisesData();
     }, [])
@@ -29,12 +34,17 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
     };
     // onClick we trigger handleSearch
     const handleSearch = async() => {
+        const queryParams = new URLSearchParams({
+            limit: 10000,
+        });
+
         if (search) {
-            const response = await fetch('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+            const response = await fetch(`https://exercisedb.p.rapidapi.com/exercises?${queryParams}`, exerciseOptions);
             const exercisesData = await response.json();
 
             const filteredExercises = exercisesData.filter(
-                (exercise) => exercise.name.toLowerCase().includes(search) ||
+                (exercise) => 
+                    exercise.name.toLowerCase().includes(search) ||
                     exercise.bodyPart.toLowerCase().includes(search) ||
                     exercise.target.toLowerCase().includes(search) ||
                     exercise.equipment.toLowerCase().includes(search)
@@ -42,7 +52,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
 
             setSearch('');
             setExercises(filteredExercises);
-            console.log(filteredExercises);
+            console.log('The exercises returned are:', filteredExercises);
 
         }
     };
@@ -61,7 +71,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
                 </div>
             </Box>
             <Box sx={{ position: 'relative', width: '100%' }}>
-                <HorizontalScroll data={bodyPart} bodyPart={bodyPart} setBodyPart={setBodyPart}/> 
+                <HorizontalScroll data={bodyPart} bodyPart={selectedBodyPart} setBodyPart={setSelectedBodyPart}/> 
             </Box>
         </Stack>
 
