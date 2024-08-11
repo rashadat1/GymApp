@@ -514,7 +514,7 @@ h2 {
       padding: 10px; /* Reduce padding on smaller screens */
   }
 }
-@media screen and (min-width: 700px) {
+@media screen and (min-width: 701px) {
 
   .left-arrow {
     left: 1500px; /* Position the left arrow within the container */
